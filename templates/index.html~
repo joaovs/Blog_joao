@@ -11,13 +11,50 @@
     <!-- CSS -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.2.1/material.deep_purple-deep_orange.min.css">
-    <link rel="stylesheet" href="static/styles/login.css">
+    <link rel="stylesheet" href="static/styles/index.css">
 
   </head>
 
   <body>
 
-    Esse vai ser nossa página principal, por enquanto ainda não temos conteúdo =/
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Pagina Inicial</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+	{% if logado == True %}
+	<a class="mdl-navigation__link" href="/Postar">Postar</a>
+        <a class="mdl-navigation__link" href="">Sair</a>
+	{% else %}
+        <a class="mdl-navigation__link" href="/signup">Cadastrar</a>
+        <a class="mdl-navigation__link" href="/login">Logar</a>
+	{% endif %}
+      </nav>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+	<div class="mdl-card mdl-shadow--6dp">
+	  <div class="mdl-card__title">
+	    <h2 class="mdl-card__title-text">Titulo</h2>
+	  </div>
+	  <div class="mdl-card__supporting-text">
+	    Text
+	  </div>
+	</div>
+  </main>
+</div>
+
+<!-- Wide card with share menu button -->
+<style>
+.mdl-card {
+  margin: 0 15% 0 15%;
+  width: 70%;
+}
+</style>
 
     <script src="https://storage.googleapis.com/code.getmdl.io/1.2.1/material.min.js"></script>
   </body>
