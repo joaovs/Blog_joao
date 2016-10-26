@@ -70,7 +70,8 @@ class User(ndb.Model):
 
 class Postar(ndb.Model):
   titulo = ndb.StringProperty(required = True)
-  menssagem = ndb.StringProperty(required = True)
+  mensagem = ndb.StringProperty(required = True)
+  created_at = ndb.DateTimeProperty(auto_now_add = True)
 
 
 
@@ -93,10 +94,11 @@ class Handler(webapp2.RequestHandler):
 class MainHandler(Handler):
   def get(self):
     user_id = self.request.cookies.get("user_id")
+    posts = Postar.query().fetch()
     if user_id and check_secure_val(user_id):
-      self.render("index.html", logado = True)
+      self.render("index.html", logado = True, posts = posts)
     else:
-      self.render("index.html", logado = False)
+      self.render("index.html", logado = False, posts = posts)
 
 class LoginHandler(Handler):
   def get(self):
@@ -141,11 +143,11 @@ class PostHandler(Handler):
     if user_id and check_secure_val(user_id):
       titulo = self.request.get("titulo")
       mensagem = self.request.get("mensagem")
-      Postar = Postar (
+      postar = Postar(
         titulo = titulo,
         mensagem = mensagem
       )
-      Postar.put()
+      postar.put()
     self.redirect("/")
 
 

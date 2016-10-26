@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Awesome Blog!</title>
+    <title>Pagina Inicial</title>
 
     <!-- CSS -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
@@ -16,6 +16,7 @@
   </head>
 
   <body>
+
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
@@ -36,15 +37,26 @@
       </nav>
     </div>
   </header>
+
+<style>
+.mdl-card__title {
+  background-color: orange;
+  	
+}
+</style>
+
   <main class="mdl-layout__content">
+    {% for post in posts %}
 	<div class="mdl-card mdl-shadow--6dp">
 	  <div class="mdl-card__title">
-	    <h2 class="mdl-card__title-text">Titulo</h2>
+	    <h2 style="margin-left: 47%;"
+		class="mdl-card__title-text">{{ post.titulo }}</h2>
 	  </div>
 	  <div class="mdl-card__supporting-text">
-	    Text
+	    {{ post.mensagem }}
 	  </div>
 	</div>
+    {% endfor %}
   </main>
 </div>
 
